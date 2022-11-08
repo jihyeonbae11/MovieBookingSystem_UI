@@ -1,0 +1,84 @@
+<dx-popup
+  [width]="500"
+  [height]="460"
+  [showTitle]="true"
+  [title]="isCreateMode() ? '예매하기' : '예매내역 변경'"
+  [dragEnabled]="false"
+  [closeOnOutsideClick]="true"
+  [showCloseButton]="true"
+  container=".dx-viewport"
+  [(visible)]="popupVisible"
+>
+  <dxi-toolbar-item
+    widget="dxButton"
+    toolbar="bottom"
+    location="before"
+    [options]="{text: '저장', onClick: save}"
+  >
+  </dxi-toolbar-item>
+  <dxi-toolbar-item
+    widget="dxButton"
+    toolbar="bottom"
+    location="before"
+    [options]="{text: '취소', onClick: cancel}"
+  >
+  </dxi-toolbar-item>
+  <div class="popup-edit-form" *dxTemplate="let data of 'content'">
+    <dx-validation-group>
+      <div class="dx-fieldset">
+        <div class="dx-fieldset-header">예매정보</div>
+
+        <div class="dx-field" *ngIf="isUpdateMode()">
+          <div class="dx-field-label">예매번호</div>
+          <div class="dx-field-value-static">{{bookingList.bookingId}}</div>
+        </div>
+
+<!--        <div class="dx-field">-->
+<!--          <div class="dx-field-label">영화제목</div>-->
+<!--          <dx-text-box class="dx-field-value" [(value)]="bookingList.movieName">-->
+<!--            <dx-validator>-->
+<!--              <dxi-validation-rule type="required" message="제목을 입력하세요."></dxi-validation-rule>-->
+<!--            </dx-validator>-->
+<!--          </dx-text-box>-->
+<!--        </div>-->
+
+        <div class="dx-field">
+          <div class="dx-field-label">영화제목</div>
+          <dx-select-box class="dx-field-value"
+                         name="movieName" [(value)]="bookingList.movieName"
+                         [items]="movies" [searchEnabled]="true" valueExpr="code" displayExpr="text"
+          ></dx-select-box>
+        </div>
+
+        <div class="dx-field">
+          <div class="dx-field-label">영화관</div>
+          <dx-select-box class="dx-field-value"
+                         name="cinema" [(value)]="bookingList.cinema"
+                         [items]="cinemas" [searchEnabled]="true" valueExpr="code" displayExpr="text"
+          ></dx-select-box>
+        </div>
+
+        <div class="dx-field">
+          <div class="dx-field-label">인원</div>
+          <dx-select-box class="dx-field-value"
+                         name="persons" [(value)]="bookingList.persons"
+                         [items]="persons" [searchEnabled]="true" valueExpr="code" displayExpr="text"
+          ></dx-select-box>
+        </div>
+
+        <div class="dx-field">
+          <div class="dx-field-label">상영일자</div>
+          <dx-date-box class="dx-field-value" [(value)]="bookingList.showTime"
+                       displayFormat="yyyy-MM-dd HH:mm" invalidDateMessage="날짜를 올바른 형식으로 입력하세요: yyyy-MM-dd HH:mm">
+            <dx-validator>
+            </dx-validator>
+          </dx-date-box>
+        </div>
+
+        <dx-validation-summary></dx-validation-summary>
+
+      </div>
+    </dx-validation-group>
+  </div>
+
+</dx-popup>

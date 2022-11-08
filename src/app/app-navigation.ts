@@ -19,6 +19,10 @@ export const navigation = [
       {
         text: '직원 관리',
         path: '/employee'
+      },
+      {
+        text: '예매내역',
+        path: '/bookinglist'
       }
     ]
   }

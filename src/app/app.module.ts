@@ -8,6 +8,7 @@ import { AuthService, ScreenService, AppInfoService } from './shared/services';
 import { UnauthenticatedContentModule } from './unauthenticated-content';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import {DevExtremeModule, DxTextBoxModule} from "devextreme-angular";
 
 @NgModule({
   declarations: [
@@ -26,6 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     UnauthenticatedContentModule,
     AppRoutingModule,
     HttpClientModule,
+    DxTextBoxModule,
+    DevExtremeModule,
   ],
   providers: [
     AuthService,
