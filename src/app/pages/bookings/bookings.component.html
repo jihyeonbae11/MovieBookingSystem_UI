@@ -1,8 +1,8 @@
-<h2 class="content-block">예매내역</h2>
+<h2 class="content-block">예매목록</h2>
 
 <div class="list-container">
   <div class="crud-buttons">
-    <dx-text-box [(value)]="filter" class="search-bar" placeholder="이름으로 조회" (onEnterKey)="search()">
+    <dx-text-box [(value)]="filter" class="search-bar" placeholder="예매번호로 조회" (onEnterKey)="search()">
     </dx-text-box>
     <dx-button
       class="crud-button"
@@ -29,17 +29,18 @@
   </div>
 
   <dx-data-grid
-    [dataSource]="bookingList"
+    [dataSource]="bookings"
     [showBorders]="true"
     [remoteOperations]="true"
     [hoverStateEnabled]="true"
     [selectedRowKeys]="[]"
   >
-    <dxi-column dataField="bookingId" dataType="number" caption="예약번호" [width]="100"></dxi-column>
-    <dxi-column dataField="movieName" dataType="string" caption="영화제목" [customizeText]="displayCinema" [width]="100"></dxi-column>
-    <dxi-column dataField="cinema" dataType="string" caption="영화관" [customizeText]="displayCinema" [width]="100"></dxi-column>
+    <dxi-column dataField="bookingId" dataType="number" caption="예매번호" [width]="100"></dxi-column>
+    <dxi-column dataField="userId" dataType="string" caption="ID"></dxi-column>
+    <dxi-column dataField="movieId" dataType="number" caption="영화"></dxi-column>
+    <dxi-column dataField="cinema" dataType="string" caption="상영관" [width]="100"></dxi-column>
+    <dxi-column dataField="persons" dataType="number" caption="인원" [width]="100"></dxi-column>
     <dxi-column dataField="showTime" dataType="date" caption="상영시간" [format]="{ type: 'yyyy-MM-dd HH:mm' }"></dxi-column>
-    <dxi-column dataField="bookingTime" dataType="date" caption="예매시간" [format]="{ type: 'yyyy-MM-dd HH:MM:ss' }"></dxi-column>
     <dxo-selection mode="single"></dxo-selection>
     <dxo-paging [pageSize]="10"></dxo-paging>
     <dxo-pager
@@ -51,4 +52,4 @@
   </dx-data-grid>
 </div>
 
-<bookingList-edit-popup (onSaved)="onSaved($event)"></bookingList-edit-popup>
+<app-bookings-edit-popup (onSaved)="onSaved($event)"></app-bookings-edit-popup>

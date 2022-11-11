@@ -21,8 +21,12 @@ export const navigation = [
         path: '/employee'
       },
       {
+        text: '영화',
+        path: '/movies'
+      },
+      {
         text: '예매내역',
-        path: '/bookinglist'
+        path: '/bookings'
       }
     ]
   }

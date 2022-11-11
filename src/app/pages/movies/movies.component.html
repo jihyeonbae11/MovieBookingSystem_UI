@@ -1,0 +1,53 @@
+<h2 class="content-block">영화</h2>
+
+<div class="list-container">
+  <div class="crud-buttons">
+    <dx-text-box [(value)]="filter" class="search-bar" placeholder="영화 제목으로 조회" (onEnterKey)="search()">
+    </dx-text-box>
+    <dx-button
+      class="crud-button"
+      text="조회"
+      (onClick)="search()"
+    ></dx-button>
+
+<!--    <dx-button-->
+<!--      class="crud-button"-->
+<!--      text="드라마"-->
+<!--      (onClick)="search()"-->
+<!--    ></dx-button>-->
+<!--    <dx-button-->
+<!--      class="crud-button"-->
+<!--      text="로맨스"-->
+<!--      (onClick)="search()"-->
+<!--    ></dx-button>-->
+<!--    <dx-button-->
+<!--      class="crud-button"-->
+<!--      text="기타"-->
+<!--      (onClick)="search()"-->
+<!--    ></dx-button>-->
+
+  </div>
+
+  <dx-data-grid
+    [dataSource]="movies"
+    [showBorders]="true"
+    [remoteOperations]="true"
+    [hoverStateEnabled]="true"
+    [selectedRowKeys]="[]"
+  >
+    <dxi-column dataField="movieId" dataType="number" caption="No" [width]="100"></dxi-column>
+    <dxi-column dataField="movieName" dataType="string" caption="영화제목" ></dxi-column>
+    <dxi-column dataField="director" dataType="string" caption="감독"></dxi-column>
+    <dxi-column dataField="genre" dataType="string" caption="장르" [width]="100"></dxi-column>
+    <dxi-column dataField="viewingLevel" dataType="string" caption="관람등급" [width]="100"></dxi-column>
+    <dxo-selection mode="single"></dxo-selection>
+    <dxo-paging [pageSize]="10"></dxo-paging>
+    <dxo-pager
+      [showPageSizeSelector]="true"
+      [allowedPageSizes]="[5, 10, 20]"
+      [showInfo]="true"
+      [visible]="true"
+    ></dxo-pager>
+  </dx-data-grid>
+</div>
+

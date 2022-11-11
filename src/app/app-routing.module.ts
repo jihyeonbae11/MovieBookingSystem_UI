@@ -14,8 +14,9 @@ import {DevExtremeModule} from 'devextreme-angular';
 import {EmployeeComponent} from "./pages/employee/employee.component";
 import {CommonModule} from "@angular/common";
 import {EmployeeEditComponent} from "./pages/employee/edit/employee-edit.component";
-import {BookingListComponent} from "./pages/bookinglist/bookingList.component";
-import {BookingListEditComponent} from "./pages/bookinglist/edit/bookingList-edit.component";
+import {MoviesComponent} from "./pages/movies/movies.component";
+import {BookingsComponent} from "./pages/bookings/bookings.component";
+import {BookingsEditComponent} from "./pages/bookings/edit/bookings-edit.component";
 
 const routes: Routes = [
   {
@@ -59,28 +60,18 @@ const routes: Routes = [
     canActivate: [ AuthGuardService ]
   },
   {
-    path: 'movie',
-    component: BookingListComponent,
+    path: 'movies',
+    component: MoviesComponent,
     canActivate: [AuthGuardService]
   },
   {
-    path: 'movie/:genre',
-    component: BookingListComponent,
+    path: 'bookings',
+    component: BookingsComponent,
     canActivate: [AuthGuardService]
   },
   {
-    path: 'bookinglist/:userId',
-    component: BookingListComponent,
-    canActivate: [AuthGuardService]
-  },
-  {
-    path: 'bookinglist',
-    component: BookingListComponent,
-    canActivate: [AuthGuardService]
-  },
-  {
-    path: 'bookinglist/:bookingId',
-    component: BookingListComponent,
+    path: 'bookings/:bookingId',
+    component: BookingsComponent,
     canActivate: [AuthGuardService]
   },
   {
@@ -99,8 +90,9 @@ const routes: Routes = [
     TasksComponent,
     EmployeeComponent,
     EmployeeEditComponent,
-    BookingListComponent,
-    BookingListEditComponent
+    MoviesComponent,
+    BookingsComponent,
+    BookingsEditComponent
   ]
 })
 export class AppRoutingModule { }
