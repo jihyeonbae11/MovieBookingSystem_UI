@@ -5,28 +5,20 @@ export const navigation = [
     icon: 'home'
   },
   {
-    text: 'Examples',
+    text: '영화예매시스템',
     icon: 'folder',
     items: [
-      {
-        text: 'Profile',
-        path: '/profile'
-      },
-      {
-        text: 'Tasks',
-        path: '/tasks'
-      },
-      {
-        text: '직원 관리',
-        path: '/employee'
-      },
       {
         text: '영화',
         path: '/movies'
       },
       {
-        text: '예매내역',
-        path: '/bookings'
+        text: '예매',
+        path: '/booking/list'
+      },
+      {
+        text: '사용자',
+        path: '/user/list'
       }
     ]
   }

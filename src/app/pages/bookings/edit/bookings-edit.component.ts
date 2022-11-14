@@ -3,6 +3,8 @@ import 'devextreme/data/odata/store';
 import notify from "devextreme/ui/notify";
 import {DxFormComponent, DxValidationGroupComponent} from "devextreme-angular";
 import {Booking, BookingsService} from "../services/bookings.service";
+import {User} from "../../user/services/user.service";
+import {Movie} from "../../movies/services/movies.service";
 
 @Component({
   selector: 'app-bookings-edit-popup',
@@ -14,7 +16,7 @@ export class BookingsEditComponent {
   booking: Booking;
   editMode: 'create' | 'update';
   popupVisible = false;
-  cinema = [{code: '1', text: 'CGV'}, {code: '2', text: 'MEGABOX'}, {code: '3', text: '롯데시네마'}];
+  cinema = [{code: 'CGV', text: 'CGV'}, {code: 'MEGABOX', text: 'MEGABOX'}, {code: '롯데시네마', text: '롯데시네마'}];
   persons = [{code: '1', text: '1명'}, {code: '2', text: '2명'}, {code: '3', text: '3명'}, {code: '4', text: '4명'}, {code: '5', text: '5명'}];
   movieId = [{code: 1, text: '블랙팬서-와칸다 포에버'}, {code: 2, text: '동감'}, {code: 3, text: '데시벨'}, {code: 4, text: '폴-600미터'}, {code: 5, text: '자백'}, {code: 6, text: '고속도로 가족'}, {code: 7, text: '리멤버'}];
 
@@ -41,6 +43,8 @@ export class BookingsEditComponent {
       });
     } else {
       this.booking = {} as Booking;
+      this.booking.user = {} as User;
+      this.booking.movie = {} as Movie;
       this.popupVisible = true;
     }
 

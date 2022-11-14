@@ -17,6 +17,7 @@ import {EmployeeEditComponent} from "./pages/employee/edit/employee-edit.compone
 import {MoviesComponent} from "./pages/movies/movies.component";
 import {BookingsComponent} from "./pages/bookings/bookings.component";
 import {BookingsEditComponent} from "./pages/bookings/edit/bookings-edit.component";
+import {UserComponent} from "./pages/user/user.component";
 
 const routes: Routes = [
   {
@@ -65,13 +66,18 @@ const routes: Routes = [
     canActivate: [AuthGuardService]
   },
   {
-    path: 'bookings',
+    path: 'booking/list',
     component: BookingsComponent,
     canActivate: [AuthGuardService]
   },
   {
-    path: 'bookings/:bookingId',
+    path: 'booking/:bookingId',
     component: BookingsComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'user/list',
+    component: UserComponent,
     canActivate: [AuthGuardService]
   },
   {
@@ -92,7 +98,8 @@ const routes: Routes = [
     EmployeeEditComponent,
     MoviesComponent,
     BookingsComponent,
-    BookingsEditComponent
+    BookingsEditComponent,
+    UserComponent
   ]
 })
 export class AppRoutingModule { }

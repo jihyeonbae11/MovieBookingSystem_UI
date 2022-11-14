@@ -28,6 +28,23 @@
       <div class="dx-fieldset">
         <div class="dx-fieldset-header">예매정보</div>
 
+        <div class="dx-field" *ngIf="isCreateMode()">
+          <div class="dx-field-label">ID</div>
+          <dx-text-box class="dx-field-value" [(value)]="booking.user.userId">
+            <dx-validator>
+              <dxi-validation-rule type="required" message="ID를 입력하세요."></dxi-validation-rule>
+            </dx-validator>
+          </dx-text-box>
+        </div>
+
+        <div class="dx-field" *ngIf="isCreateMode()">
+          <div class="dx-field-label">영화</div>
+          <dx-select-box class="dx-field-value"
+                         name="movieId" [(value)]="booking.movie.movieId"
+                         [items]="movieId" [searchEnabled]="true" valueExpr="code" displayExpr="text"
+          ></dx-select-box>
+        </div>
+
         <div class="dx-field" *ngIf="isUpdateMode()">
           <div class="dx-field-label">예매번호</div>
           <div class="dx-field-value-static">{{booking.bookingId}}</div>
@@ -35,24 +52,7 @@
 
         <div class="dx-field" *ngIf="isUpdateMode()">
           <div class="dx-field-label">영화</div>
-<!--          <div class="dx-field-value-static">{{booking.movieName}}</div>-->
-        </div>
-
-        <div class="dx-field">
-          <div class="dx-field-label">ID</div>
-          <dx-text-box class="dx-field-value" [(value)]="booking.userId">
-            <dx-validator>
-              <dxi-validation-rule type="required" message="ID를 입력하세요."></dxi-validation-rule>
-            </dx-validator>
-          </dx-text-box>
-        </div>
-
-        <div class="dx-field">
-          <div class="dx-field-label">영화</div>
-          <dx-select-box class="dx-field-value"
-                         name="cinema" [(value)]="booking.movieId"
-                         [items]="movieId" [searchEnabled]="true" valueExpr="code" displayExpr="text"
-          ></dx-select-box>
+          <div class="dx-field-value-static">{{booking.movie.movieName}}</div>
         </div>
 
         <div class="dx-field">

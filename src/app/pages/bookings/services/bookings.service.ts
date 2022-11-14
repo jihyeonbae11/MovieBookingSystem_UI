@@ -2,17 +2,21 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams, HttpParamsOptions} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Pageable} from "../../../shared/services/pageable.service";
+import {Movie} from "../../movies/services/movies.service";
+import {User} from "../../user/services/user.service";
 
 export interface Booking {
   bookingId: number;
   userId: string;
   movieId: number;
+  movie: Movie;
+  user: User;
   cinema: string;
   persons: number;
   showTime: string | number | Date;
 }
 
-const URL = '/dna/practice/bookings';
+const URL = '/dna/practice/booking';
 
 @Injectable()
 export class BookingsService {
@@ -21,7 +25,7 @@ export class BookingsService {
   }
 
   list(params: Pageable): Observable<any> {
-    return this.http.get<any>(`${URL}`, {params: params as any});
+    return this.http.get<any>(`${URL}/list`, {params: params as any});
   }
 
   find(bookingId: number): Observable<Booking> {

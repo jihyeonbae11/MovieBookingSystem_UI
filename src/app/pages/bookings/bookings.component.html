@@ -2,7 +2,7 @@
 
 <div class="list-container">
   <div class="crud-buttons">
-    <dx-text-box [(value)]="filter" class="search-bar" placeholder="예매번호로 조회" (onEnterKey)="search()">
+    <dx-text-box [(value)]="filter" class="search-bar" placeholder="상영관으로 조회" (onEnterKey)="search()">
     </dx-text-box>
     <dx-button
       class="crud-button"
@@ -11,18 +11,19 @@
     ></dx-button>
     <dx-button
       class="crud-button"
-      text="생성"
+      text="예매하기"
+      style="color: white; background-color: #337ab7;"
       (onClick)="create()"
     ></dx-button>
     <dx-button
       class="crud-button"
-      text="변경"
+      text="예매변경"
       [disabled]="!getSelectedBookingId()"
       (onClick)="update()"
     ></dx-button>
     <dx-button
       class="crud-button"
-      text="삭제"
+      text="예매취소"
       [disabled]="!getSelectedBookingId()"
       (onClick)="delete()"
     ></dx-button>
@@ -36,8 +37,8 @@
     [selectedRowKeys]="[]"
   >
     <dxi-column dataField="bookingId" dataType="number" caption="예매번호" [width]="100"></dxi-column>
-    <dxi-column dataField="userId" dataType="string" caption="ID"></dxi-column>
-    <dxi-column dataField="movieId" dataType="number" caption="영화"></dxi-column>
+    <dxi-column dataField="user.userId" dataType="string" caption="ID"></dxi-column>
+    <dxi-column dataField="movie.movieName" dataType="string" caption="영화"></dxi-column>
     <dxi-column dataField="cinema" dataType="string" caption="상영관" [width]="100"></dxi-column>
     <dxi-column dataField="persons" dataType="number" caption="인원" [width]="100"></dxi-column>
     <dxi-column dataField="showTime" dataType="date" caption="상영시간" [format]="{ type: 'yyyy-MM-dd HH:mm' }"></dxi-column>
